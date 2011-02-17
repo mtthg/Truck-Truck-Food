@@ -3,8 +3,12 @@ import java.io.InputStream;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.ResponseHandler;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Context;
@@ -14,6 +18,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Looper;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 public class gps extends Activity {
@@ -115,20 +120,18 @@ public class gps extends Activity {
 		};
 		t.start();      
 	}
-	/*public void getStuff(View v) {
-		HttpGet get = new HttpGet("http://twory.heroku.com/random.json");
+	public void getStuff(View v) {
+		HttpGet get = new HttpGet("url");
 		ResponseHandler<String> responseHandler = new BasicResponseHandler();
 
 		try {
 			String responseBody = client.execute(get, responseHandler);
 			JSONObject jObject = new JSONObject(responseBody);
-			JSONObject jObjLine = jObject.getJSONObject("last_line").getJSONObject("line");
-			String message = jObjLine.getString("text");
-			story_id = jObjLine.getString("story_id");
-
-			JSONObject jObjStory = jObject.getJSONObject("current_story").getJSONObject("story");
-			String story_title = jObjStory.getString("title");
-
+			JSONObject jObjLine = jObject.getJSONObject("truck");
+			lat = jObjLine.getString("lon");
+			lon = jObjLine.get("lon");
+			Toast.makeText(gps.this, lon.toString(), Toast.LENGTH_SHORT).show();
+			Toast.makeText(gps.this, lat.toString(), Toast.LENGTH_SHORT).show();
 		}
 
 		catch (Throwable t) {
@@ -145,5 +148,5 @@ public class gps extends Activity {
 		//		.setMessage(t.toString())
 		//		.setPositiveButton("OK", null)
 		//		.show();
-	}*/
+	}
 }
