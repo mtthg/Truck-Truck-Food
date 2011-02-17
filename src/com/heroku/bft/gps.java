@@ -21,6 +21,7 @@ public class gps extends Activity {
 	private DefaultHttpClient client=null;
 	private Object lat=null;
 	private Object lon=null;
+	private Object distance=null;
 	
 	//have to get GPS coordinates first
 	private LocationManager lm;
@@ -57,6 +58,7 @@ public class gps extends Activity {
             }
         lat = loc.getLatitude();
         lon = loc.getLongitude();
+        distance = 20;
         }
 
         @Override
