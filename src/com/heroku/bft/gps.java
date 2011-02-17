@@ -24,9 +24,11 @@ import android.widget.Toast;
 public class gps extends Activity {
 	
 	private DefaultHttpClient client=null;
-	private Object lat=null;
-	private Object lon=null;
-	private Object distance=null;
+	private Object lat=-71.060472;
+	private double lon=42.365909;
+	private double distance=5;
+	private double clover_lat=42.359705;
+	private double clover_lon=-71.059215;
 	
 	//have to get GPS coordinates first
 	private LocationManager lm;
@@ -61,8 +63,8 @@ public class gps extends Activity {
                     " lon: " + loc.getLongitude(), 
                     Toast.LENGTH_SHORT).show();
             }
-        lat = loc.getLatitude();
-        lon = loc.getLongitude();
+//        lat = loc.getLatitude();
+//        lon = loc.getLongitude();
         distance = 20;
         }
 
@@ -128,10 +130,9 @@ public class gps extends Activity {
 			String responseBody = client.execute(get, responseHandler);
 			JSONObject jObject = new JSONObject(responseBody);
 			JSONObject jObjLine = jObject.getJSONObject("truck");
-			lat = jObjLine.getString("lon");
-			lon = jObjLine.get("lon");
-			Toast.makeText(gps.this, lon.toString(), Toast.LENGTH_SHORT).show();
-			Toast.makeText(gps.this, lat.toString(), Toast.LENGTH_SHORT).show();
+			//lat = jObjLine.getString("lon");
+			//lon = jObjLine.get("lon");
+			
 		}
 
 		catch (Throwable t) {
