@@ -3,42 +3,92 @@ import java.io.InputStream;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.ResponseHandler;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONObject;
 
 import android.app.Activity;
+import android.content.Context;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.os.Bundle;
 import android.os.Looper;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class gps extends Activity {
 	
 	private DefaultHttpClient client=null;
-	private String latitude=null;
-	private String longitude=null;
+	private Object lat=null;
+	private Object lon=null;
 	
 	//have to get GPS coordinates first
+	private LocationManager lm;
+    private LocationListener locationListener;
+
+    /** Called when the activity is first created. */
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.main); 
+        
+        //---use the LocationManager class to obtain GPS locations---
+        lm = (LocationManager) 
+            getSystemService(Context.LOCATION_SERVICE);    
+        
+        locationListener = new MyLocationListener();
+        
+        lm.requestLocationUpdates(
+            LocationManager.GPS_PROVIDER, 
+            0, 
+            0, 
+            locationListener);        
+    }
+    
+    private class MyLocationListener implements LocationListener 
+    {
+        @Override
+        public void onLocationChanged(Location loc) {
+            if (loc != null) {
+                Toast.makeText(getBaseContext(), 
+                    "Location changed : lat: " + loc.getLatitude() + 
+                    " lon: " + loc.getLongitude(), 
+                    Toast.LENGTH_SHORT).show();
+            }
+        lat = loc.getLatitude();
+        lon = loc.getLongitude();
+        }
+
+        @Override
+        public void onProviderDisabled(String provider) {
+            // TODO Auto-generated method stub
+        }
+
+        @Override
+        public void onProviderEnabled(String provider) {
+            // TODO Auto-generated method stub
+        }
+
+        @Override
+        public void onStatusChanged(String provider, int status, 
+            Bundle extras) {
+            // TODO Auto-generated method stub
+        }
+    }        
+
 	private void sendcoordinates() {
 		Thread t = new Thread(){
 			public void run() {
 				Looper.prepare(); //For Preparing Message Pool for the child Thread
 				try {
 					StringBuilder url = new StringBuilder("http://localhost:3000/trucks/locate.json?");
-					url.append("lat=").append("latitude").append("&lon=").append("longitude").append("&dist=").append("distance");
+					url.append("lat=").append(lat).append("&lon=").append(lon).append("&dist=").append("distance");
 					HttpClient httpclient = new DefaultHttpClient();
-					HttpPost postMethod = new HttpPost(url.toString());
+					HttpPost httppost = new HttpPost(url.toString());
 					
 				//get latitude and longitude from gps and package 
 										
-					HttpResponse httpResponse = client.execute(postMethod);
+					HttpResponse httpResponse = client.execute(httppost);
 					Log.d("LocationResponse",httpResponse.toString());
 					if(httpResponse!=null){
 						InputStream in = httpResponse.getEntity().getContent(); //Get the data in the entity
