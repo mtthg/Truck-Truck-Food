@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent" android:background="@drawable/bg_vertical"
+	android:gravity="center">
+	<Button android:id="@+id/find_truck" android:text="Find A Food Truck"
+		android:layout_width="200px" android:layout_height="70px"
+		android:textStyle="bold" />
+	<TextView android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:text="" />
+	<Button android:layout_width="200px" android:id="@+id/adventure"
+		android:text="Go On A Food Adventure" android:layout_height="70px"
+		android:textStyle="bold">
+	</Button>
+
+</LinearLayout>
