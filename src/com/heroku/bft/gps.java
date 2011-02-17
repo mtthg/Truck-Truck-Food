@@ -81,7 +81,7 @@ public class gps extends Activity {
 			public void run() {
 				Looper.prepare(); //For Preparing Message Pool for the child Thread
 				try {
-					StringBuilder url = new StringBuilder("http://localhost:3000/trucks/locate.json?");
+					StringBuilder url = new StringBuilder("http://trucktruckfood.heroku.com/trucks/locate.json?");
 					url.append("lat=").append(lat).append("&lon=").append(lon).append("&dist=").append("distance");
 					HttpClient httpclient = new DefaultHttpClient();
 					HttpPost httppost = new HttpPost(url.toString());
