@@ -1,12 +1,47 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:stretchColumns="1"
     >
-<TextView  
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="@string/hello"
+    
+    <TableRow>
+    <TextView android:id="@+id/truckname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clover Food Truck"
+    	android:textStyle="bold"
     />
-</LinearLayout>
+    
+    <TextView android:id="@+id/hours"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="   Open Today: 11am-6pm"
+        android:textStyle="italic"
+    />
+    </TableRow>
+    
+    <Button android:id="@+id/getdirections"
+	    android:layout_width="fill_parent" 
+    	android:layout_height="wrap_content"
+		android:text="Directions"
+		android:textStyle="bold"/>
+        
+	<com.google.android.maps.MapView 
+    	android:id="@+id/mapview1"
+    	android:layout_width="fill_parent" 
+    	android:layout_height="300.0px"
+    	android:enabled="true" 
+    	android:clickable="true" 
+    	android:apiKey="083pfGQXdpKHItHPoOIHbSd0r2e3sb2MIjlz8jQ" 
+    /> 
+    
+    <Button android:id="@+id/viewmenu"
+	    android:layout_width="fill_parent" 
+    	android:layout_height="wrap_content"
+		android:text="Menu"
+		android:textStyle="bold"
+	/>
+	
+            
+</TableLayout>
