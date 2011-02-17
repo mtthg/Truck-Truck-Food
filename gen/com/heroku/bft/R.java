@@ -20,8 +20,27 @@ public final class R {
         public static final int adventure=0x7f050001;
         public static final int find_truck=0x7f050000;
     }
+    public static final class id {
+        public static final int Driving=0x7f050003;
+        public static final int Walking=0x7f050002;
+        public static final int estimatedtime=0x7f050001;
+        public static final int getdirections=0x7f05000a;
+        public static final int hours=0x7f050009;
+        public static final int mapview1=0x7f05000b;
+        public static final int step1=0x7f050004;
+        public static final int step2=0x7f050005;
+        public static final int step3=0x7f050006;
+        public static final int step4=0x7f050007;
+        public static final int step5=0x7f050008;
+        public static final int truckname=0x7f050000;
+        public static final int viewmenu=0x7f05000c;
+    }
     public static final class layout {
+<<<<<<< HEAD
         public static final int frontscreen=0x7f030000;
+=======
+        public static final int directions=0x7f030000;
+>>>>>>> f56c1f523cf5562ffa18604acd5308e021c451c0
         public static final int main=0x7f030001;
     }
     public static final class string {
