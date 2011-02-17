@@ -44,9 +44,9 @@ public class trucklist extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main);
+		setContentView(R.layout.trucks_listview);
 		ListView lv = (ListView)findViewById(R.id.ListView01);
-		lv.setAdapter(new TruckAdapter(this, android.R.layout.simple_list_item_1));
+		lv.setAdapter(new TruckAdapter(this, R.layout.list_item));
 		
 		lv.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view,

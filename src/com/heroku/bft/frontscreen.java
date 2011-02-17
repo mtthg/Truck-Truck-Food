@@ -15,7 +15,8 @@ public class frontscreen extends Activity {
         final Button button = (Button) findViewById(R.id.find_truck);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            	 Intent intent = new Intent(getApplicationContext(),trucklist.class);
+            	 
+            	Intent intent = new Intent(frontscreen.this,trucklist.class);
                  startActivityForResult(intent, 0);
                  return;
              
