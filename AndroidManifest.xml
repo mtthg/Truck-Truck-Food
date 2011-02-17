@@ -9,19 +9,19 @@
 	
     <application android:icon="@drawable/icon" android:label="@string/app_name">
     
-        <activity android:name=".Homescreen"
+        <activity android:name=".GoogleMaps"
                   android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-        <activity android:name=".GoogleMaps"
-        		  android:label="@string/app_name">
-        		  </activity>
 
          <activity android:name=".Directions"
+                   android:label="@string/app_name">
+         </activity>
+         
+                  <activity android:name=".gps"
                    android:label="@string/app_name">
          </activity>
 
